@@ -10,6 +10,9 @@ class UsersRepository implements IUsersRepository {
   constructor() {
     this.repository = getRepository(User);
   }
+  findByName(email: string): Promise<User> {
+    throw new Error("Method not implemented.");
+  }
 
   async create({
     name,
@@ -33,8 +36,8 @@ class UsersRepository implements IUsersRepository {
     return user;
   }
 
-  async findByName(name: string): Promise<User> {
-    const user = await this.repository.findOne({ name });
+  async findByEmail(email: string): Promise<User> {
+    const user = await this.repository.findOne({ email });
 
     return user;
   }
